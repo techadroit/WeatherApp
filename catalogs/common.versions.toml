@@ -1,0 +1,11 @@
+[versions]
+ktor_version = "2.3.3"
+
+[libraries]
+ktor_client = { module = "io.ktor:ktor-client-core", version.ref = "ktor_version" }
+ktor_cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor_version" }
+ktor_content_negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor_version" }
+ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor_version" }
+
+[bundles]
+network = ["ktor_client","ktor_cio","ktor_content_negotiation","ktor_serialization"]
