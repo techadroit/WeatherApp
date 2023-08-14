@@ -1,7 +1,6 @@
 package com.weather.app.data
 
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.DEFAULT
@@ -10,7 +9,6 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
-import io.ktor.client.statement.HttpResponse
 import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import io.ktor.serialization.kotlinx.json.json
@@ -21,8 +19,8 @@ class NetworkClient(
     val apiKey: String = "e998be1f247e4a618eb145912201712"
 ) {
 
-    private val client = HttpClient(CIO) {
-        install(Logging){
+    val client = HttpClient(CIO) {
+        install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
         }
@@ -39,41 +37,35 @@ class NetworkClient(
         }
     }
 
-    suspend fun performGet(
-        path: String,
-        parameter: Map<String, String>
-    ): HttpResponse? = run {
+    suspend inline fun <reified T> performGet(
+        builder: RequestBuilder
+    ): T? = run {
         val urBuilder = HttpRequestBuilder().apply {
             url {
                 protocol = URLProtocol.HTTPS
                 host = baseUrl
-                path(path)
-                parameter.forEach {
+                path(builder.path)
+                builder.queryParameter.forEach {
                     parameters.append(it.key, it.value)
                 }
                 parameters.append("key", apiKey)
             }
         }
-        client.get(urBuilder)
+        val response = client.get(urBuilder).handleResponse<T>()
+        response
     }
 
+
     suspend inline fun <reified T> request(
-        requestType: RequestType,
-        path: String,
-        parameter: Map<String, String>
+        builder: RequestBuilder
     ): T? =
         try {
-            when (requestType) {
-                RequestType.GET -> performGet(path, parameter)?.body()
+            when (builder.requestType) {
+                RequestType.GET -> performGet<T>(builder)
                 RequestType.POST -> null
             }
         } catch (e: Exception) {
             e.printStackTrace()
             null
         }
-}
-
-enum class RequestType {
-    GET,
-    POST,
 }
