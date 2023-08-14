@@ -1,9 +1,7 @@
 package com.weather.app
 
-import com.weather.app.data.NetworkClient
-import com.weather.app.data.RequestType
-import com.weather.app.data.buildRequest
-import com.weather.app.data.response.CityWeatherResponse
+import com.weather.app.data.client.NetworkClient
+import com.weather.app.data.repository.WeatherRemoteRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -12,18 +10,17 @@ class Greeting {
 
     fun greet() {
         performNetwork()
-         "Hello, ${platform.name}!"
+        "Hello, ${platform.name}!"
     }
 
-    fun performNetwork(){
+    fun performNetwork() {
         GlobalScope.launch {
             val client = NetworkClient()
-            val response = client.request<CityWeatherResponse>(buildRequest {
-                requestType = RequestType.GET
-                path = "v1/current.json"
-                queryParameter = mapOf("q" to "london")
-            })
-            println(" the response is ${response?.current}")
+            val repository = WeatherRemoteRepository(client)
+            repository.fetchCurrentWeather("london")
+                .collect {
+                    println(" the response is ${it?.current}")
+                }
         }
     }
 }

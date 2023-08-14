@@ -1,4 +1,4 @@
-package com.weather.app.data
+package com.weather.app.data.client
 
 enum class RequestType {
     GET,

@@ -1,4 +1,4 @@
-package com.weather.app.data
+package com.weather.app.data.client
 
 import io.ktor.client.call.body
 import io.ktor.client.statement.HttpResponse

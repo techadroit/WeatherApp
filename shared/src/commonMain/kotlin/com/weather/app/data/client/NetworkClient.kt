@@ -1,4 +1,4 @@
-package com.weather.app.data
+package com.weather.app.data.client
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
@@ -12,6 +12,8 @@ import io.ktor.client.request.get
 import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.json.Json
 
 class NetworkClient(
@@ -48,7 +50,6 @@ class NetworkClient(
                 builder.queryParameter.forEach {
                     parameters.append(it.key, it.value)
                 }
-                parameters.append("key", apiKey)
             }
         }
         val response = client.get(urBuilder).handleResponse<T>()
@@ -58,14 +59,17 @@ class NetworkClient(
 
     suspend inline fun <reified T> request(
         builder: RequestBuilder
-    ): T? =
-        try {
-            when (builder.requestType) {
-                RequestType.GET -> performGet<T>(builder)
-                RequestType.POST -> null
+    ): Flow<T?> =
+        flow {
+            try {
+                val response = when (builder.requestType) {
+                    RequestType.GET -> performGet<T>(builder)
+                    RequestType.POST -> null
+                }
+                emit(response)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                throw e
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
         }
 }
