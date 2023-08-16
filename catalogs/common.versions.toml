@@ -1,6 +1,7 @@
 [versions]
 ktor_version = "2.3.3"
 kmm_viewmodel = "1.0.0-ALPHA-9"
+kmm_native_coroutines = "1.0.0-ALPHA-10"
 koinVersion = "3.4.3"
 
 [libraries]
@@ -10,6 +11,7 @@ ktor_content_negotiation = { module = "io.ktor:ktor-client-content-negotiation",
 ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor_version" }
 ktor_logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor_version" }
 kmm_viewmodel = { module = "com.rickclephas.kmm:kmm-viewmodel-core", version.ref = "kmm_viewmodel" }
+kmm_native_coroutines = { module = "com.rickclephas.kmm:kmm-viewmodel-core", version.ref = "kmm_native_coroutines" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koinVersion" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
