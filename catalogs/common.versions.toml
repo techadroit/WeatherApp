@@ -1,5 +1,6 @@
 [versions]
 ktor_version = "2.3.3"
+kmm_viewmodel = "1.0.0-ALPHA-9"
 
 [libraries]
 ktor_client = { module = "io.ktor:ktor-client-core", version.ref = "ktor_version" }
@@ -7,6 +8,8 @@ ktor_cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor_version" }
 ktor_content_negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor_version" }
 ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor_version" }
 ktor_logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor_version" }
+kmm_viewmodel = { module = "com.rickclephas.kmm:kmm-viewmodel-core", version.ref = "kmm_viewmodel" }
 
 [bundles]
 network = ["ktor_client","ktor_cio","ktor_content_negotiation","ktor_serialization","ktor_logging"]
+kmm = ["kmm_viewmodel"]
