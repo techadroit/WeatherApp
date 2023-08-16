@@ -15,6 +15,9 @@ dependencyResolutionManagement {
         create("commonlibs") {
             from(files("./catalogs/common.versions.toml"))
         }
+        create("androidLibs"){
+            from(files("./catalogs/android.versions.toml"))
+        }
     }
 }
 

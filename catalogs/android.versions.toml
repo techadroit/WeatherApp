@@ -1,0 +1,80 @@
+[versions]
+androidGradlePlugin = "7.4.0"
+kotlinVersion = "1.8.0"
+retrofitVersion = "2.9.0"
+okhttpVersion = "4.11.0"
+retrofitGsonConverter = "0.9.2"
+hiltVersion = "2.44"
+hiltNavigation = "1.0.0"
+composeVersion = "1.4.0"
+navComposeVersion = "2.5.0"
+material3Version = "1.0.1"
+lifeCycleVersion = "2.6.0"
+mockkVersion = "1.13.5"
+junitVersion = "4.13.2"
+kotlinxCoroutines = "1.7.1"
+koinVersion = "3.4.3"
+koinNavigationVersion = "3.4.6"
+koinCompose = "1.0.4"
+
+[libraries]
+# ktx
+androidx-ktx-core = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
+androidx-ktx-lifecyle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifeCycleVersion" }
+androidx-ktx-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifeCycleVersion" }
+# Network dependencies
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+retrofit-coroutines-adapter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlin-coroutines-adapter", version = "0.9.2" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion" }
+retrofit-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpVersion" }
+retrofit-gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
+# Dependency Injection
+androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+androidx-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+androidx-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion" }
+# Compose
+androidx-compose = { group = "androidx.compose.ui", name = "ui", version.ref = "composeVersion" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "composeVersion" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeVersion" }
+androidx-compose-ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "composeVersion" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "composeVersion" }
+androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navComposeVersion" }
+androidx-compose-material = { group = "androidx.compose.material3", name = "material3", version.ref = "material3Version" }
+androidx-compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifeCycleVersion" }
+androidx-activity = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
+kotlin-fixture = { group = "com.appmattus.fixture", name="fixture", version = "1.2.0" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
+koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koinVersion" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinVersion" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
+koin-android-test = { module = "io.insert-koin:koin-android-test", version.ref = "koinVersion" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinNavigationVersion" }
+koin-androidx-compose-navigatioin = { module = "io.insert-koin:koin-androidx-compose-navigation", version.ref = "koinNavigationVersion" }
+
+# unit test
+junit-test = { group = "junit", name = "junit", version.ref = "junitVersion" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockkVersion" }
+android-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version = "kotlinxCoroutines" }
+# android test
+androidx-test-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.0" }
+
+[bundles]
+network = ["retrofit", "retrofit-coroutines-adapter", "okhttp", "retrofit-gson-converter", "retrofit-logging-interceptor"]
+hilt = ["androidx-hilt", "androidx-hilt-navigation"]
+compose = ["androidx-compose", "androidx-compose-foundation", "androidx-compose-material",
+    "androidx-compose-navigation", "androidx-compose-ui-tooling", "androidx-compose-ui-test-junit",
+    "androidx-compose-lifecycle", "androidx-compose-ui-test-manifest", "androidx-activity"]
+ktx = ["androidx-ktx-core", "androidx-ktx-lifecyle","androidx-ktx-viewmodel"]
+unit-test = ["junit-test", "mockk", "android-coroutines-test","kotlin-fixture"]
+androidx-test = ["androidx-test-junit", "androidx-test-espresso","kotlin-fixture"]
+koin = ["koin-core","koin-android","koin-core-coroutines","koin-compose","koin-androidx-compose","koin-androidx-compose-navigatioin"]
+koin-test = ["koin-test","koin-android-test","koin-test-junit4"]
+
+[plugins]
+hilt-dagger = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
