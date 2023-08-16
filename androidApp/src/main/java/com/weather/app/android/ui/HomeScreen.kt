@@ -10,6 +10,6 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeScreen(viewModel: HomeViewModel = koinViewModel()){
     val state = viewModel.stateFlow.collectAsState().value
     state.currentWeather?.let { 
-        Text(text = it.weatherCondition)
+        Text(text = it.weatherCondition + " the temp is "+ it.temp)
     }
 }

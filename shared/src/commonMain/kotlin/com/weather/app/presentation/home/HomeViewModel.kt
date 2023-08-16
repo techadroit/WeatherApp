@@ -1,7 +1,6 @@
 package com.weather.app.presentation.home
 
 import com.weather.app.core.KViewModel
-import com.weather.app.core.collectIn
 import com.weather.app.data.repository.WeatherRemoteRepository
 import kotlinx.coroutines.launch
 

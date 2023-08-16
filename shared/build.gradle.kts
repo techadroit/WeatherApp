@@ -42,6 +42,7 @@ kotlin {
                 //put your multiplatform dependencies here
                 implementation(commonlibs.bundles.network)
                 implementation(commonlibs.bundles.kmm)
+                implementation(commonlibs.bundles.koin)
             }
         }
         val commonTest by getting {

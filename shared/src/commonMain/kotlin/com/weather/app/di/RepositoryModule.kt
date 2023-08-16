@@ -1,4 +1,4 @@
-package com.weather.app.android.di
+package com.weather.app.di
 
 import com.weather.app.data.repository.WeatherRemoteRepository
 import org.koin.dsl.module
