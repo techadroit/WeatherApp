@@ -17,8 +17,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.json.Json
 
 class NetworkClient(
-    val baseUrl: String = "api.weatherapi.com",
-    val apiKey: String = "e998be1f247e4a618eb145912201712"
+    val baseUrl: String = "api.weatherapi.com"
 ) {
 
     val client = HttpClient(CIO) {
