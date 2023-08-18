@@ -10,8 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.weather.app.android.di.viewModelModule
 import com.weather.app.android.ui.HomeScreen
+import com.weather.app.di.engineModule
 import com.weather.app.di.initKoin
 import com.weather.app.presentation.home.HomeViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initKoin(modules = listOf(viewModelModule))
+        initKoin(listOf(engineModule))
         setContent {
             MyApplicationTheme {
                 Surface(

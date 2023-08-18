@@ -1,6 +1,7 @@
 package com.weather.app.data.client
 
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.DEFAULT
@@ -17,10 +18,11 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.json.Json
 
 class NetworkClient(
-    val baseUrl: String = "api.weatherapi.com"
+    val baseUrl: String = "api.weatherapi.com",
+    val httpClientEngine: HttpClientEngine
 ) {
 
-    val client = HttpClient(CIO) {
+    val client = HttpClient(httpClientEngine) {
         install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL

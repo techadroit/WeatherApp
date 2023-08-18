@@ -35,6 +35,8 @@ kotlin {
         val androidMain by getting{
             dependencies {
                 implementation(androidLibs.bundles.ktx)
+                implementation(androidLibs.bundles.koin)
+                implementation(commonlibs.ok.http.engine)
             }
         }
         val commonMain by getting {
@@ -45,6 +47,12 @@ kotlin {
                 implementation(commonlibs.bundles.koin)
             }
         }
+
+        val iosMain by getting {
+        dependencies {
+            implementation(commonlibs.darwin.engine)
+        }
+    }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))

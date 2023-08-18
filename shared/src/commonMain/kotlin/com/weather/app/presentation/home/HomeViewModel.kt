@@ -18,7 +18,7 @@ class HomeViewModel(val repository: WeatherRemoteRepository) : KViewModel<HomeVi
         }
         scope.launch {
             repository
-                .fetchCurrentWeather("london")
+                .fetchCurrentWeather("mumbai")
                 .collect {
                     setState {
                         addCurrentWeather(

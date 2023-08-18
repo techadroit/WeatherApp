@@ -15,6 +15,7 @@
 		C389A5AA2A8CF98C009BA33F /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = C389A5A92A8CF98C009BA33F /* KMPNativeCoroutinesAsync */; };
 		C389A5AC2A8CF98C009BA33F /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = C389A5AB2A8CF98C009BA33F /* KMPNativeCoroutinesCombine */; };
 		C389A5AE2A8CF98C009BA33F /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = C389A5AD2A8CF98C009BA33F /* KMPNativeCoroutinesCore */; };
+		C389A5B02A8F822D009BA33F /* ObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C389A5AF2A8F822D009BA33F /* ObservableViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,7 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C389A5A62A8CD7B2009BA33F /* KoinDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoinDependencies.swift; sourceTree = "<group>"; };
+		C389A5AF2A8F822D009BA33F /* ObservableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				C389A5A62A8CD7B2009BA33F /* KoinDependencies.swift */,
+				C389A5AF2A8F822D009BA33F /* ObservableViewModel.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C389A5A72A8CD7B2009BA33F /* KoinDependencies.swift in Sources */,
+				C389A5B02A8F822D009BA33F /* ObservableViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
