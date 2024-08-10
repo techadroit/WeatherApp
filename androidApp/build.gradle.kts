@@ -14,11 +14,11 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
-//    buildFeatures {
-//        compose = true
-//    }
+    buildFeatures {
+        compose = true
+    }
 //    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.4.7"
+//        kotlinCompilerExtensionVersion = "2.0.0"
 //    }
 //    packaging {
 //        resources {
