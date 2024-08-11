@@ -2,6 +2,7 @@ package com.weather.app.android
 
 import android.app.Application
 import com.weather.app.android.modules.viewmodelModule
+import com.weather.app.modules.sharedModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -17,7 +18,7 @@ class MainApp : Application() {
             // Reference Android context
             androidContext(this@MainApp)
             // Load modules
-            modules(viewmodelModule)
+            modules(viewmodelModule + sharedModule)
         }
     }
 }

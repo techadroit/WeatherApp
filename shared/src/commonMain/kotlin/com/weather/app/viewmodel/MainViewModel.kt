@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(val repository: WeatherRemoteRepository) : ViewModel() {
 
     val state = MutableStateFlow(WeatherState())
 
@@ -18,8 +18,8 @@ class MainViewModel : ViewModel() {
 
     fun performNetwork() {
         GlobalScope.launch {
-            val client = NetworkClient()
-            val repository = WeatherRemoteRepository(client)
+//            val client = NetworkClient()
+//            val repository = WeatherRemoteRepository(client)
             repository.fetchCurrentWeather("london")
                 .collect { res ->
                     println(" the response is ${res?.current}")

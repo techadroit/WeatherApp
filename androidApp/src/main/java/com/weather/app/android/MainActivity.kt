@@ -24,7 +24,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-//                    Greeting().greet()
                     GreetingView("Hello Kmp")
                 }
             }
@@ -42,9 +41,7 @@ fun GreetingView(
         viewModel.loadData()
     }
     val state = viewModel.state.collectAsState()
-    state?.let {
-        Text(text = it.value.city.toString())
-    }
+    Text(text = state.value.city.toString())
 }
 
 @Preview
