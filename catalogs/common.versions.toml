@@ -16,7 +16,8 @@ lifecycle_viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "life
 koin_core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin_version"}
 koin_test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin_version"}
 koin_android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin_version"}
-kotlin_serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.1"}
+koin_compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin_version"}
+kotlin_serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "serialization"}
 
 [bundles]
 network = ["ktor_client","ktor_cio","ktor_content_negotiation","ktor_serialization","ktor_logging"]

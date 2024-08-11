@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(commonlibs.plugins.androidApplication)
+    alias(commonlibs.plugins.kotlinAndroid)
     alias(commonlibs.plugins.compose.compiler)
 }
 
@@ -17,14 +17,11 @@ android {
     buildFeatures {
         compose = true
     }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "2.0.0"
-//    }
-//    packaging {
-//        resources {
-//            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-//        }
-//    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -48,4 +45,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.6.8")
     implementation("androidx.compose.material:material:1.6.8")
     implementation("androidx.activity:activity-compose:1.9.1")
+    implementation(commonlibs.koin.android)
+    implementation(commonlibs.koin.compose)
+
 }

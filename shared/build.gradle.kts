@@ -32,13 +32,16 @@ kotlin {
                 implementation(commonlibs.bundles.network)
                 implementation(commonlibs.bundles.lifecycle)
                 implementation(commonlibs.kotlin.serialization)
-//                implementation(commonlibs.bundles.koin)
+                implementation(commonlibs.koin.core)
+//                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+                implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.4")
+
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-//                implementation(commonlibs.koin.test)
+                implementation(commonlibs.koin.test)
             }
         }
     }
