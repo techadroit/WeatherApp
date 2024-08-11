@@ -1,21 +1,20 @@
 plugins {
-    kotlin("multiplatform")
-    kotlin("plugin.serialization")
-    id("com.android.library")
+    alias(commonlibs.plugins.kotlinMultiplatform)
+    alias(commonlibs.plugins.androidLibrary)
+    alias(commonlibs.plugins.compose.compiler)
+    alias(commonlibs.plugins.kotlinSerialization)
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
 
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -31,11 +30,18 @@ kotlin {
             dependencies {
                 //put your multiplatform dependencies here
                 implementation(commonlibs.bundles.network)
+                implementation(commonlibs.bundles.lifecycle)
+                implementation(commonlibs.kotlin.serialization)
+                implementation(commonlibs.koin.core)
+//                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+                implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.4")
+
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(commonlibs.koin.test)
             }
         }
     }
@@ -43,8 +49,12 @@ kotlin {
 
 android {
     namespace = "com.weather.app"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 24
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
