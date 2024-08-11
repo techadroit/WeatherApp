@@ -4,6 +4,7 @@ life_cycle_version = "2.8.0"
 koin_version = "3.2.0"
 kotlin = "2.0.0"
 agp = "8.5.1"
+serialization = "1.7.1"
 
 [libraries]
 ktor_client = { module = "io.ktor:ktor-client-core", version.ref = "ktor_version" }
@@ -15,6 +16,7 @@ lifecycle_viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "life
 koin_core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin_version"}
 koin_test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin_version"}
 koin_android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin_version"}
+kotlin_serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.1"}
 
 [bundles]
 network = ["ktor_client","ktor_cio","ktor_content_negotiation","ktor_serialization","ktor_logging"]
@@ -28,4 +30,5 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization" , version.ref = "kotlin"}
 

@@ -4,7 +4,7 @@ plugins {
     alias(commonlibs.plugins.androidLibrary).apply(false)
     alias(commonlibs.plugins.kotlinAndroid).apply(false)
     alias(commonlibs.plugins.kotlinMultiplatform).apply(false)
-    alias(commonlibs.plugins.compose.compiler).apply(false)
+    alias(commonlibs.plugins.compose.compiler)
 }
 
 

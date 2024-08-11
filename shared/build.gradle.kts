@@ -1,7 +1,8 @@
 plugins {
     alias(commonlibs.plugins.kotlinMultiplatform)
     alias(commonlibs.plugins.androidLibrary)
-    alias(commonlibs.plugins.compose.compiler).apply(false)
+    alias(commonlibs.plugins.compose.compiler)
+    alias(commonlibs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -30,6 +31,7 @@ kotlin {
                 //put your multiplatform dependencies here
                 implementation(commonlibs.bundles.network)
                 implementation(commonlibs.bundles.lifecycle)
+                implementation(commonlibs.kotlin.serialization)
 //                implementation(commonlibs.bundles.koin)
             }
         }
