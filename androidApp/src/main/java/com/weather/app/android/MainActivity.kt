@@ -3,10 +3,18 @@ package com.weather.app.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,12 +32,21 @@ import org.koin.androidx.compose.koinViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
                 ) {
-                    MainScreen()
+                    Column {
+                        Spacer(
+                            Modifier.windowInsetsTopHeight(
+                                WindowInsets.statusBars
+                            )
+                        )
+                        MainScreen()
+                    }
                 }
             }
         }
@@ -48,7 +65,7 @@ fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
             .background(MaterialTheme.colors.background),
     ) {
         state.value.result?.onSuccess {
-            Text(text = it.city)
+            TopView(cityName = it.city, temp = it.temp)
         }
         if (state.value.isLoading) {
             CircularProgressIndicator(
@@ -57,6 +74,19 @@ fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
                     .size(50.dp)
             )
         }
+    }
+}
+
+@Composable
+fun TopView(cityName: String, temp: String) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Spacer(modifier = Modifier.height(56.dp))
+        Text(text = temp, style = MaterialTheme.typography.h1)
+        Text(text = cityName, style = MaterialTheme.typography.h4)
+        Spacer(modifier = Modifier.height(62.dp))
     }
 }
 
