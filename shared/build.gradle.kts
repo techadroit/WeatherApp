@@ -35,6 +35,8 @@ kotlin {
                 implementation(commonlibs.koin.core)
 //                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
                 implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
+
 
             }
         }

@@ -22,8 +22,12 @@ class WeatherService(private val networkClient: NetworkClient) {
         networkClient.request<ForecastWeatherResponse>(buildRequest {
             requestType = RequestType.GET
             path = FORECAST_API_PATH
-            queryParameter = buildParameter(city, networkClient.apiKey)
+            queryParameter = buildParameter(city, networkClient.apiKey).apply {
+                "days" to 7
+                "aqi" to "no"
+                "alerts" to "no"
+            }
         })
 
-    private fun buildParameter(city: String, key: String) = mapOf("q" to city, "key" to key)
+    private fun buildParameter(city: String, key: String) = mutableMapOf("q" to city, "key" to key)
 }

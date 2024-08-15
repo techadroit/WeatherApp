@@ -2,6 +2,7 @@ package com.weather.app.viewmodel
 
 import com.weather.app.data.response.CityWeatherResponse
 import com.weather.app.data.response.ForecastWeatherResponse
+import kotlinx.datetime.LocalDate
 
 
 data class WeatherInfo(val city: String, val temp: String)
@@ -26,16 +27,23 @@ fun WeatherState.success(res: CityWeatherResponse?) =
 fun WeatherState.success(
     res: CityWeatherResponse?,
     forecastWeatherResponse: ForecastWeatherResponse?
-) =
-    copy(
+): WeatherState {
+    val forecastList = forecastWeatherResponse?.forecast?.forecastday?.map {
+        WeatherForecast(
+            day = getDayOfWeek(it.date),
+            temp = it.day.avgtempC.toString()
+        )
+    }
+    return copy(
         isLoading = false,
         result = Result.success(WeatherInfo(city, res?.current?.tempC.toString())),
         foreCastResult = Result.success(
-            forecastWeatherResponse?.forecast?.forecastday?.map {
-                WeatherForecast(
-                    day = forecastWeatherResponse.location.name,
-                    temp = it.day.avgtempC.toString()
-                )
-            }
+            forecastList
         )
     )
+}
+
+fun getDayOfWeek(dateString: String): String {
+    val date = LocalDate.parse(dateString)
+    return date.dayOfWeek.name  // Returns the day of the week as a string, e.g., "THURSDAY"
+}
