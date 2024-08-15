@@ -5,11 +5,12 @@ import com.weather.app.data.response.ForecastWeatherResponse
 
 
 data class WeatherInfo(val city: String, val temp: String)
+data class WeatherForecast(val day: String, val temp: String)
 
 data class WeatherState(
     val isLoading: Boolean = false,
     val result: Result<WeatherInfo>? = null,
-    val foreCastResult: Result<List<WeatherInfo>?>? = null
+    val foreCastResult: Result<List<WeatherForecast>?>? = null
 )
 
 fun WeatherState.loading() = copy(isLoading = true)
@@ -31,8 +32,8 @@ fun WeatherState.success(
         result = Result.success(WeatherInfo(city, res?.current?.tempC.toString())),
         foreCastResult = Result.success(
             forecastWeatherResponse?.forecast?.forecastday?.map {
-                WeatherInfo(
-                    city = forecastWeatherResponse.location.name,
+                WeatherForecast(
+                    day = forecastWeatherResponse.location.name,
                     temp = it.day.avgtempC.toString()
                 )
             }
