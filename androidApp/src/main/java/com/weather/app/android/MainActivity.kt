@@ -12,7 +12,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,9 +38,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
-//    LaunchedEffect(key1 = Unit) {
-//        viewModel.loadData()
-//    }
+    LaunchedEffect(key1 = Unit) {
+        viewModel.loadData()
+    }
     val state = viewModel.state.collectAsState()
     Box(
         modifier = Modifier
@@ -51,6 +53,7 @@ fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
         if (state.value.isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier
+                    .align(Alignment.Center)
                     .size(50.dp)
             )
         }
