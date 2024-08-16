@@ -24,13 +24,21 @@ fun MyApplicationTheme(
         darkColors(
             primary = Color(0xFFBB86FC),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            onPrimary = Color(0xFF2A2A2A),
+            secondary = Color(0xFF03DAC5),
+            onSecondary = Color(0xFF556799),
+            surface = Color(0xFFF5F6F7),
+            background = Color(0xFFF5F6F7)
         )
     } else {
         lightColors(
             primary = Color(0xFF6200EE),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            onPrimary = Color(0xFF2A2A2A),
+            secondary = Color(0xFF03DAC5),
+            onSecondary = Color(0xFF556799),
+            surface = Color(0xFFF5F6F7),
+            background = Color(0xFFF5F6F7)
         )
     }
     val typography = Typography(
@@ -38,8 +46,21 @@ fun MyApplicationTheme(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp
+        ),
+        h1 = TextStyle(
+            fontWeight = FontWeight.Medium,
+            fontSize = 96.sp,
+            lineHeight = 112.sp,
+            letterSpacing = (-1.5).sp,
+        ),
+        h4 = TextStyle(
+            fontWeight = FontWeight.Thin,
+            fontSize = 34.sp,
+            lineHeight = 36.sp,
+            letterSpacing = 0.25.sp
         )
     )
+
     val shapes = Shapes(
         small = RoundedCornerShape(4.dp),
         medium = RoundedCornerShape(4.dp),

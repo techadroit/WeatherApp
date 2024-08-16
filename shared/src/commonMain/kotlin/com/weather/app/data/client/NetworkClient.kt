@@ -57,7 +57,7 @@ class NetworkClient(
     }
 
 
-    suspend inline fun <reified T> request(
+    inline fun <reified T> request(
         builder: RequestBuilder
     ): Flow<T?> =
         flow {
